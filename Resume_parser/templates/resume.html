@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Resume Data</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        ul {
+            margin: 0;
+            padding: 0;
+            list-style-type: disc;
+        }
+    </style>
+</head>
+<body>
+    <h1>Resume Data for {{ request.files['file'].filename }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Details</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for section, details in data.items() %}
+            <tr>
+                <td>{{ section }}</td>
+                <td>
+                    <ul>
+                        {% for detail in details %}
+                            <li>{{ detail }}</li>
+                        {% endfor %}
+                    </ul>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
